@@ -1,0 +1,58 @@
+{%extends "layout.html"%}
+
+{% block title %}
+    : Home
+{% endblock %}
+
+
+{% block main %}
+  <!-- A hidden input field used to get value from js and pass it to server -->
+  <input type="hidden" id="sysAnswer" name="sysAnswer" form="inputform"  style="display: none;">
+  <!-- The user input form area -->
+  <form action="/" method="post" id="inputform">
+      <input id="title" name="title" autocomplete="off" required placeholder="Title" minlength="5" maxlength="90">
+      <textarea id="content" name="content" autocomplete="off" required placeholder="Share Something Positive" minlength="15" maxlength="1000"></textarea>
+      <span class="formspan" id="formimguser">
+          <input name="image" autocomplete="off" placeholder="Image Link (Optional)" maxlength="1000" id="formimginput">
+          <input name="user" autocomplete="off" required placeholder="Your Name" minlength="3" maxlength="20">
+      </span>
+      <span class="formspan">
+          <input id="userQuestion" name="userAnswer" autocomplete="off" required placeholder="" minlength="1" maxlength="2">
+          <button id="postBtn">POST</button>
+      </span>
+  </form>
+
+
+  <!-- Flashes of error if any made by userinput -->
+  <span id="errormsg">{{get_flashed_messages()[0]}}</span>
+
+  <!-- This contains all the posts loaded from db -->
+  <div id="container">
+    {% for post in all_posts %}
+        <main>
+            <div id="usertime">
+                <span>
+                    <form id="userFilter" action="/" method="get">by <button name="user" value="{{post["user"]}}" id="postuser">{{post["user"]}}</button></form>
+                </span>
+                <span id="postdate">{{post["time"]}}</span>
+            </div>
+            <h1 id="posttitle">
+                {{post["title"]}}
+            </h1>
+            <h2 id="postcontent">
+                {{post["content"]}}
+            </h2>
+            {% if post["image"] != "" %}
+                <img id="postimg" src={{post["image"]}} alt="&nbsp;&nbsp;Failed to load Image&nbsp;&nbsp;">
+            {% endif %}
+            <div id="likereport">
+                <button class="like-btn" name="like" value={{post["id"]}}>&#x1F49C <span id="likeCount">{{post["likes"]}}</span></button>
+                <button class="report-btn" name="report" value={{post["id"]}}>Report</button>
+            </div>
+        </main>
+
+    {% endfor %}
+  </div>
+
+<script src="/static/index.js"></script>
+{% endblock %}

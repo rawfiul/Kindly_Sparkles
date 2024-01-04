@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+/* https://coolors.co/cdf0ea-f9f9f9-f6c6ea-5e807f-faf4b7 */
+:root {
+    --background: #F9F9F9;
+    --accent: #F6C6EA;
+    --accent-3: #ee95d8;
+    --main: #CDF0EA;
+    --main-1: #c0ece5;
+    --main-2: #b0e8de;
+    --main-3: #a1e3d8;
+    --main-4: #91ded1;
+    --action: #9f8ce0;
+    /* Pallet ends, elements start */
+    --bodyBg: var(--background);
+    --bodyOverlay: var(--accent);
+    --headerTopGrad: var(--main-1); /**/
+    --headerBotGrad: var(--main-3); /**/
+    --headerHover: var(--action);
+    --formTopGrad: var(--main-2); /**/
+    --formBotGrad: var(--main); /**/
+    --inputBorderHover: var(--main-4);
+    --submitBg: var(--accent);
+    --submitBgHover: var(--accent-3);
+    --postTopGrad: var(--main); /**/
+    --postBotGrad: var(--main-2); /**/
+    --pTitleBg: var(--background);
+    --imgBorder: var(--main-4);
+    --likeBg: var(--accent);
+    --likeBgHover: var(--accent-3);
+    --liked: var(--action);
+    --reported: var(--action);
+    --aboutHintTopGrad: var(--main-2); /**/
+    --aboutHintBotGrad: var(--main); /**/
+    --aboutPointsTopBg: var(--main); /**/
+    --aboutPointsBotBg: var(--main-2); /**/
+    --githubLinkBg: var(--action);
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background-image: radial-gradient(var(--bodyOverlay) 0.2vh, transparent 0.2vh), radial-gradient(var(--bodyOverlay) 0.2vh, transparent 0.2vh);
+    background-size: 6.3vh 6.3vh;
+    background-position: 0 0, 3.15vh 3.15vh;
+    background-color: var(--bodyBg);
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+h1 {
+    font-size: 1.2vw;
+}
+
+h2, h3 {
+    font-size: .9vw;
+}
+
+header {
+    padding: 0 6vh;
+    height: 6vh;
+    border-end-end-radius: 100vh;
+    border-end-start-radius: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(180deg, var(--headerTopGrad) 0%, var(--headerBotGrad) 100%);
+}
+
+header>a{
+    color: black;
+    text-decoration: none;
+    font-size: 1.5vh;
+}
+
+header>a:hover{
+    color: var(--headerHover);
+    text-decoration: overline;
+}
+
+#sitename {
+    font-size: 3.5vh;
+}
+
+#inputform {
+    margin: 5vh auto;
+    height: 30vh;
+    width: 60vw;
+    border-end-end-radius: 10vw;
+    border-start-start-radius: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1vh;
+    background: linear-gradient(180deg, var(--formTopGrad) 0%, var(--formBotGrad) 100%);
+}
+
+#inputform > *{
+    border-radius: 1000px;
+    width: 70%;
+    height: 12%;
+}
+
+#inputform > *::placeholder, .formspan > *::placeholder{
+    font-size: 1.7vh;
+}
+
+input[name="title"]:hover, textarea[name="content"]:hover, .formspan > *:hover, input[name="title"]:focus, textarea[name="content"]:focus, .formspan > *:focus{
+    border: 2px solid var(--inputBorderHover);
+}
+
+input[name="title"], input[name="content"], .formspan > *{
+    font-size: 1.7vh;
+}
+
+#content {
+    height: 10vh;
+    width: 90%;
+    padding: 3vh;
+    font-size: 1.7vh;
+}
+
+.formspan {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1vh;
+}
+
+.formspan > * {
+    border-radius: 1000px;
+    width: 90%;
+}
+
+#formimguser, #title {
+    width: 80%;
+}
+
+#postBtn {
+    font-size: 1.7vh;
+    background-color: var(--submitBg);
+}
+
+#postBtn:hover {
+    border: 2px solid white;
+    background-color: var(--submitBgHover);
+}
+
+#errormsg {
+    color:red;
+    font-size: 1.5vh;
+}
+
+input, #postBtn {
+    padding: 0 1vh 0 1vh;
+}
+
+main {
+    margin: 5vh auto;
+    width: 95vw;
+    border-radius: 200px;
+    padding: 2vh 16vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 5px;
+    background: linear-gradient(180deg, var(--postTopGrad) 0%, var(--postBotGrad) 100%);
+}
+
+#usertime, #likereport {
+    font-size: .8vw;
+}
+
+#usertime {
+    display: flex;
+    justify-content: space-between;
+}
+
+#postuser, .like-btn, .report-btn {
+    border-radius: .75vw;
+    padding: 0.2vw 1vw;
+    font-size: 100%;
+}
+
+#postcontent {
+    margin: 1.5vh 0;
+    word-wrap: break-word;
+}
+
+#posttitle {
+    border-radius: 50px;
+    background-color: var(--pTitleBg);
+    padding: .3vh 0;
+}
+
+img {
+    font-size: .65vw;
+    align-self: center;
+    max-height: 30vh;
+    max-width: 30vw;
+    border: 2px solid var(--imgBorder);
+    border-radius: 50px;
+    color: black;
+}
+
+#likereport{
+    display: flex;
+    justify-content: space-between;
+}
+
+.like-btn {
+    background-color: var(--likeBg);
+}
+
+.like-btn:hover {
+    background-color: var(--likeBgHover);
+}
+
+#likeCount {
+    pointer-events: none;
+}
+
+#faqsBody {
+    min-height: 90vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+}
+
+#faqsHeading, #faqsFooter{
+    text-shadow: 2px 0px 2px white, 0px 2px 2px white, -2px 0px 2px white, 0px -2px 2px white;
+}
+
+#faqsHeading, #faqsPostHint, #faqsPointsToNote, #faqsFooter {
+    margin: 0 4vw 0 4vw;
+    padding: 3vh 10vw;
+    border-radius: 10vw;
+}
+
+#faqsPostHint {
+    border-end-start-radius: 0;
+    border-start-end-radius: 0;
+    background: linear-gradient(180deg, var(--aboutHintTopGrad) 0%, var(--aboutHintBotGrad) 100%);
+    margin-bottom: 4vh;
+}
+
+#faqsPointsToNote {
+    background: linear-gradient(180deg, var(--aboutPointsTopBg) 0%, var(--aboutPointsBotBg) 100%);
+}
+
+#faqsBody li {
+    text-align: left;
+    font-size: .8vw;
+}
+
+#faqsCharLimit{
+    padding-left: 2vw;
+}
+
+#faqsFooter {
+    font-size: .75vw;
+}
+
+#githubLink {
+    text-shadow: 0 0 0;
+    text-decoration: none;
+    border-radius: 20px;
+    color: white;
+    background-color: var(--githubLinkBg);
+}
+
+
+
+@media (max-width: 850px) { /*Tablets and mobiles*/
+
+    body {
+        background-image: radial-gradient(var(--bodyOverlay) 2px, transparent 2px), radial-gradient(var(--bodyOverlay) 2px, transparent 2px);
+        background-size: 45px 45px;
+        background-position: 0 0, 22.5px 22.5px;
+        background-color: var(--bodyBg);
+    }
+
+    h1 {
+        font-size: 1.5vh;
+    }
+
+    h2, h3 {
+        font-size: 1.3vh;
+    }
+
+    header>a{
+        font-size: 2.5vw;
+    }
+
+    #sitename {
+        font-size: 4vw;
+    }
+
+    #inputform {
+        width: 80vw;
+    }
+
+    #formimginput::placeholder {
+        font-size: 2.7vw;
+    }
+
+    main {
+        border-radius: 5vw;
+        padding: 2vh 6vw;
+        margin: 5vw auto;
+    }
+
+    #usertime, #likereport {
+        font-size: 1.4vh;
+    }
+
+    #posttitle {
+        padding: .6vh 0;
+    }
+
+    #postuser, .like-btn, .report-btn {
+        border-radius: 5vw;
+        padding: 0.2vh 1.5vh;
+    }
+
+    img {
+        font-size: 1vh;
+        border-radius: 3vh;
+        max-height: 20vh;
+        max-width: 25vh;
+    }
+
+    #faqsHeading {
+        font-size: 1.5vh;
+    }
+
+    #faqsBody ul {
+        font-size: 1.4vh;
+    }
+
+    #faqsBody li {
+        text-align: left;
+        font-size: 1.3vh;
+    }
+
+    #faqsFooter {
+        margin: 3vh auto;
+        padding: 0;
+        font-size: 1.3vh;
+    }
+}
+
+/* Explicitly setting button colors for safari */
+#postBtn, #postuser, .like-btn, .report-btn {
+    color: #000;
+}
